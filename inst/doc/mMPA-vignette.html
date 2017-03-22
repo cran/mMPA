@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Tao Liu, PhD and Yizhen Xu, MS" />
+
+<meta name="date" content="2017-03-22" />
+
+<title>Package: mMPA</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Package: mMPA</h1>
+<h4 class="author"><em>Tao Liu, PhD and Yizhen Xu, MS</em></h4>
+<h4 class="date"><em>2017-03-22</em></h4>
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The <code>mMPA</code> provides functions to determine the number of quantitative assays needed for a sample of data using pooled testing methods, which include mini-pooling (MP), MP with algorithm (MPA), and marker-assisted MPA (mMPA). To estimate the number of assays needed, the package also provides a tool to conduct Monte Carlo (MC) to simulate different orders in which the sample would be collected to form pools. Using MC avoids the dependence of the estimated number of assays on any specific ordering of the samples to form pools.</p>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>The following R code example demonstrates the use of the <code>mMPA</code> package.</p>
+<div id="estimate-the-average-number-of-assays-required-by-mmpa" class="section level3">
+<h3>Estimate the average number of assays required by mMPA</h3>
+<p>Let us assume that blood samples of <code>n = 300</code> HIV+ individuals are collected for HIV viral load (VL) testing. We simulate the VL test results using a Gamma (shape = 2.8, scale = 150) distribution, and generate their corresponding risk scores by adding a uniform random noise to the percentile of VL. The resulting VL has a median of <code>392</code> and an interquartile range (IQR) from <code>224</code> to <code>565</code>; the resulting risk score and VL have a Spearman’s correlation of <code>0.69</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">300</span>
+<span class="kw">set.seed</span>(<span class="dv">100</span>)
+pvl =<span class="st"> </span><span class="kw">rgamma</span>(n, <span class="dt">shape =</span> <span class="fl">2.8</span>, <span class="dt">scale =</span> <span class="dv">150</span>)
+ 
+<span class="kw">summary</span>(pvl)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    53.2   224.5   392.1   424.1   564.8  1373.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">riskscore =<span class="st"> </span>(<span class="kw">rank</span>(pvl)/n) *<span class="st"> </span><span class="fl">0.5</span> +<span class="st"> </span><span class="kw">runif</span>(n) *<span class="st"> </span><span class="fl">0.5</span>
+<span class="kw">cor</span>(pvl, riskscore, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>## [1] 0.6893592</code></pre>
+<p>We use mMPA to do a pooled VL testing with a pool size of <code>K = 5</code>. A total of 60 pools are formed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pool size K is set to 5</span>
+K =<span class="st"> </span><span class="dv">5</span>
+<span class="co"># so, the number of pools = 60</span>
+n.pool  =<span class="st"> </span>n/K; n.pool</code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<p>Of course, there are many ways to form pools. Using Monte Carlo simulation, we permute the data <code>perm_num = 100</code> time to mimic situations that the individuals came to the clinics in different orders. Thus, different choices of five blood samples are pooled.</p>
+<p>The <code>mMPA</code> package includes a function called <code>pooling_mc(v, s, K, perm_num, method, ...)</code>, which takes five main arguments as function inputs: Values of test results (<code>v</code>), corresponding risk scores (<code>s</code>), pool size (<code>K</code>), the number of Monte Carlo simulations (<code>perm_num</code>), and the method for pooling (which by default use <code>method = &quot;mMPA&quot;</code>). The function outputs the total number of VL assays needed for each of the 60 pools from each permutation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">library</span>(mMPA)
+ foo =<span class="st"> </span><span class="kw">pooling_mc</span>(pvl, riskscore, K, <span class="dt">perm_num =</span> <span class="dv">100</span>)</code></pre></div>
+<p>The output <code>foo</code> is a 60x100 matrix, of which each column stores the numbers of VL tests needed by the 60 pools that are formed for each permutation.</p>
+<p>The average number of VL tests needed per pool is then calculated to be <code>3.35</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">mean</span>(foo)</code></pre></div>
+<pre><code>## [1] 3.354333</code></pre>
+<p>The average number of VL tests needed per individual is then calculated as <code>0.67</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">mean</span>(foo)/K</code></pre></div>
+<pre><code>## [1] 0.6708667</code></pre>
+<p>So the Average number of VL Tests Required per 100 individuals (ATR) is estimated to be 67.</p>
+</div>
+<div id="comparison-with-other-pooling-algorithms" class="section level3">
+<h3>Comparison with other pooling algorithms</h3>
+<p>If we use mini-pooling (MP) for VL testing, we need an average of <code>1.192</code> assays for each individual.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo_mp =<span class="st"> </span><span class="kw">pooling_mc</span>(pvl, riskscore, <span class="dt">perm_num =</span> <span class="dv">100</span>, <span class="dt">method =</span> <span class="st">&quot;minipool&quot;</span>)
+<span class="kw">mean</span>(foo_mp)</code></pre></div>
+<pre><code>## [1] 5.960833</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(foo_mp)/K</code></pre></div>
+<pre><code>## [1] 1.192167</code></pre>
+<p>If we use mini-pooling with algorithm (MPA) (c.f. May et al, 2010), we need <code>0.79</code> assay per individual on average.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo_mpa =<span class="st"> </span><span class="kw">pooling_mc</span>(pvl, riskscore, <span class="dt">perm_num =</span> <span class="dv">100</span>, <span class="dt">method =</span> <span class="st">&quot;mpa&quot;</span>)
+<span class="kw">mean</span>(foo_mpa)</code></pre></div>
+<pre><code>## [1] 3.9445</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(foo_mpa)/K</code></pre></div>
+<pre><code>## [1] 0.7889</code></pre>
+<p>The ATRs for MP, MPA, and mMPA are 119, 79, and 67, respectively. Graphically, the efficiency of the three pooling algorithms is illustrated by the following graph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">cbind</span>(<span class="dt">MP=</span><span class="kw">apply</span>(foo_mp, <span class="dv">2</span>, mean),
+              <span class="dt">MPA=</span><span class="kw">apply</span>(foo_mpa, <span class="dv">2</span>, mean),
+              <span class="dt">mMPA=</span><span class="kw">apply</span>(foo, <span class="dv">2</span>, mean))/K*<span class="dv">100</span>,
+        <span class="dt">ylab =</span> <span class="st">&quot;Number of assays required per 100 individuals&quot;</span>)</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="calculation-of-95-confidence-interval-using-bootstrap" class="section level3">
+<h3>Calculation of 95% confidence interval using bootstrap</h3>
+<p>Above we use Monte Carlo simulation (with <code>100</code> permutations) to obtain a point estimate of ATR for each of the three pooling methods. It is a “point” estimate because all permutations are carried out on one sample, and not taking into account the sampling variability. In the following, we provide a code example to illustrate how to use the bootstrap method to calculate the 95% confidence intervals for the estimated ATRs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### we use 500 bootstrap resamples ###
+ n_bt =<span class="st"> </span><span class="dv">500</span>
+
+### For each bootstrap resample, we use Monte Carlo simulation to 
+### estimate the ATR for each pooling method. The results are saved 
+### in a 500x3 matrix. 
+ bt_result =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> n_bt, <span class="dt">ncol =</span> <span class="dv">3</span>)
+
+ for(i in <span class="dv">1</span>:n_bt){
+   bt_index =<span class="st"> </span><span class="kw">sample</span>(<span class="dt">size =</span> n, <span class="dt">x =</span> <span class="dv">1</span>:n, <span class="dt">replace =</span> T)
+   bt_pvl =<span class="st"> </span>pvl[bt_index]
+   bt_riskscore =<span class="st"> </span>riskscore[bt_index]
+
+   ### bt_pvl is a bootstrap sample of PVL; the corresponding risk is bt_riskscore
+   bt_result[i, <span class="dv">1</span>] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">pooling_mc</span>(bt_pvl, bt_riskscore, <span class="dt">perm_num =</span> <span class="dv">100</span>, <span class="dt">method =</span> <span class="st">&quot;minipool&quot;</span>))/K*<span class="dv">100</span>
+   bt_result[i, <span class="dv">2</span>] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">pooling_mc</span>(bt_pvl, bt_riskscore, <span class="dt">perm_num =</span> <span class="dv">100</span>, <span class="dt">method =</span> <span class="st">&quot;mpa&quot;</span>))/K*<span class="dv">100</span>
+   bt_result[i, <span class="dv">3</span>] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">pooling_mc</span>(bt_pvl, bt_riskscore, <span class="dt">perm_num =</span> <span class="dv">100</span>, <span class="dt">method =</span> <span class="st">&quot;mmpa&quot;</span>))/K*<span class="dv">100</span>
+}</code></pre></div>
+<p>In the following, we define a function called <code>ci_foo()</code> to calculate 2.5% and 97.5% tiles.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span>ci_foo =<span class="st"> </span>function(x) <span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))
+&gt;<span class="st"> </span><span class="kw">apply</span>(bt_result, <span class="dv">2</span>, ci_foo)
+          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]
+<span class="fl">2.5</span>%  <span class="fl">118.2737</span>  <span class="fl">75.47583</span>  <span class="fl">63.10633</span>
+<span class="fl">97.5</span>% <span class="fl">119.6833</span>  <span class="fl">82.05275</span>  <span class="fl">70.74525</span></code></pre></div>
+<p>The 95% confidence intervals are shown in the following table. So for this simulated data set, mMPA requires an average of 67 VL assays per 100 individual with a 95% CI of (63, 71). mMPA requires significantly less assays than direct individual testing (IND) and pooled testing using MP and MPA.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th align="center">ATR</th>
+<th align="center">95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IND</td>
+<td align="center">100</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td>MP</td>
+<td align="center">119.2</td>
+<td align="center">(118.3, 119.7)</td>
+</tr>
+<tr class="odd">
+<td>MPA</td>
+<td align="center">79</td>
+<td align="center">(75, 82)</td>
+</tr>
+<tr class="even">
+<td>mMPA</td>
+<td align="center">67</td>
+<td align="center">(63, 71)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="appendix-github-installation" class="section level2">
+<h2>Appendix: GitHub Installation</h2>
+<p>The latest version of the <code>mMPA</code> package is available at GitHub <a href="http://github.com/taotliu/mMPA">mMPA</a>. It requires the <code>devtools</code> package to be installed in R. If you do not have <code>devtools</code> in your R program, use the code <code>install.packages(&quot;devtools&quot;)</code> to install the <code>devtools</code> package first. Then run the following codes to install the <code>mMPA</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;taotliu/mMPA&quot;</span>)
+<span class="kw">library</span>(mMPA)</code></pre></div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
