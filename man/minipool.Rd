@@ -58,6 +58,10 @@ minipool(pvl)
 \references{
 Dorfman R. The detection of defective members of large populations. The
 Annals of Mathematical Statistics. 1943;14(4):436-440.
+
+Liu T, Hogan JW, Daniels, MJ, Coetzer M, Xu Y, Bove G, et al. Improved HIV-1 Viral Load
+Monitoring Capacity Using Pooled Testing with Marker-Assisted Deconvolution. Journal of
+AIDS. 2017;75(5): 580-587.
 }
 \seealso{
 \link{mpa}, \link{mmpa}, \link{pooling_mc}

@@ -88,6 +88,10 @@ mean(foo)/K
 #   [1] 0.67
 }
 \references{
+Liu T, Hogan JW, Daniels, MJ, Coetzer M, Xu Y, Bove G, et al. Improved HIV-1 Viral Load
+Monitoring Capacity Using Pooled Testing with Marker-Assisted Deconvolution. Journal of
+AIDS. 2017;75(5): 580-587.
+
 Bilder CR, Tebbs JM, Chen P. Informative retesting. Journal of the American
 Statistical Association. 2010;105(491):942-955.
 
@@ -97,8 +101,6 @@ Immune Deficiency Syndromes. 2010;53(2):194-201.
 
 Dorfman R. The detection of defective members of large populations. The
 Annals of Mathematical Statistics. 1943;14(4):436-440.
-
-Our manuscript; to be added.
 }
 \seealso{
 \link{minipool}, \link{mpa}, \link{mmpa}

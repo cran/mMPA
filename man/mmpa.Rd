@@ -57,14 +57,16 @@ mmpa(v = pvl, s = riskscore)
 
 }
 \references{
+Liu T, Hogan JW, Daniels, MJ, Coetzer M, Xu Y, Bove G, et al. Improved HIV-1 Viral Load
+Monitoring Capacity Using Pooled Testing with Marker-Assisted Deconvolution. Journal of
+AIDS. 2017;75(5): 580-587.
+
 Bilder CR, Tebbs JM, Chen P. Informative retesting. Journal of the American
 Statistical Association. 2010;105(491):942-955.
 
 May S, Gamst A, Haubrich R, Benson C, Smith DM. Pooled nucleic acid testing
 to identify antiretroviral treatment failure during HIV infection. Journal
 of Acquired Immune Deficiency Syndromes. 2010;53(2):194-201.
-
-Our manuscript (under review);  to be added.
 }
 \seealso{
 \link{minipool}, \link{mpa}, \link{pooling_mc}

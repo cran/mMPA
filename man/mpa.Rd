@@ -54,6 +54,10 @@ May, S., Gamst, A., Haubrich, R., Benson, C., & Smith,
 D. M. (2010). Pooled nucleic acid testing to identify antiretroviral
 treatment failure during HIV infection. Journal of acquired immune
 deficiency syndromes (1999), 53(2), 194.
+
+Liu T, Hogan JW, Daniels, MJ, Coetzer M, Xu Y, Bove G, et al. Improved HIV-1 Viral Load
+Monitoring Capacity Using Pooled Testing with Marker-Assisted Deconvolution. Journal of
+AIDS. 2017;75(5): 580-587.
 }
 \seealso{
 \link{minipool}, \link{mmpa}, \link{pooling_mc}
